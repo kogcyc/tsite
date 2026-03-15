@@ -1,0 +1,18 @@
+[
+  {
+    "title": "Handbook",
+    "desc": "a handbook",
+    "image": null,
+    "permalink": "/article/handbook/",
+    "section": "article",
+    "content": "<p>This is the handbook!</p>"
+  },
+  {
+    "title": "Something",
+    "desc": "A superb article about nothing",
+    "image": null,
+    "permalink": "/article/something/",
+    "section": "article",
+    "content": "<p>Thanks for looking!</p>"
+  }
+]

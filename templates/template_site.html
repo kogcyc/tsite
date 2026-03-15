@@ -1,0 +1,97 @@
+{% extends "template_page.html" %}
+
+{% block page_content %}
+<div class="search-ui">
+  <label class="search-label" for="site-search-input">Search The Site</label>
+  <input
+    id="site-search-input"
+    class="search-input"
+    type="search"
+    placeholder="Try: handbook, rhythm, kogswell"
+    autocomplete="off"
+  />
+  <div class="search-meta" id="site-search-meta">Type to search page titles, descriptions, and content.</div>
+  <div class="search-results" id="site-search-results"></div>
+</div>
+
+<script>
+  (function () {
+    const input = document.getElementById("site-search-input");
+    const resultsEl = document.getElementById("site-search-results");
+    const metaEl = document.getElementById("site-search-meta");
+    let index = [];
+
+    function stripHtml(html) {
+      return String(html || "").replace(/<[^>]*>/g, " ");
+    }
+
+    function scorePage(page, q) {
+      const title = (page.title || "").toLowerCase();
+      const desc = (page.desc || "").toLowerCase();
+      const text = stripHtml(page.content).toLowerCase();
+      let score = 0;
+      if (title.includes(q)) score += 10;
+      if (desc.includes(q)) score += 4;
+      if (text.includes(q)) score += 2;
+      return score;
+    }
+
+    function renderResults(items, query) {
+      if (!query) {
+        resultsEl.innerHTML = "";
+        metaEl.textContent = "Type to search page titles, descriptions, and content.";
+        return;
+      }
+
+      if (!items.length) {
+        resultsEl.innerHTML = '<p class="search-empty">No pages found for "' + query + '".</p>';
+        metaEl.textContent = "0 results";
+        return;
+      }
+
+      metaEl.textContent = items.length + " result" + (items.length === 1 ? "" : "s");
+      resultsEl.innerHTML = items.map(function (item) {
+        return (
+          '<a class="search-result-card" href="' + item.permalink + '">' +
+            '<div class="search-result-kicker">' + (item.section || "page") + "</div>" +
+            '<h3 class="search-result-title">' + (item.title || "Untitled") + "</h3>" +
+            '<p class="search-result-desc">' + (item.desc || "") + "</p>" +
+          "</a>"
+        );
+      }).join("");
+    }
+
+    function runSearch(query) {
+      const q = query.trim().toLowerCase();
+      if (!q) {
+        renderResults([], "");
+        return;
+      }
+
+      const matches = index
+        .map(function (page) {
+          return { page: page, score: scorePage(page, q) };
+        })
+        .filter(function (item) { return item.score > 0; })
+        .sort(function (a, b) { return b.score - a.score; })
+        .map(function (item) { return item.page; });
+
+      renderResults(matches, query);
+    }
+
+    fetch("/search_index.json")
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        index = Array.isArray(data) ? data : [];
+        metaEl.textContent = "Search index ready (" + index.length + " pages).";
+      })
+      .catch(function () {
+        metaEl.textContent = "Search index failed to load.";
+      });
+
+    input.addEventListener("input", function (e) {
+      runSearch(e.target.value || "");
+    });
+  })();
+</script>
+{% endblock %}

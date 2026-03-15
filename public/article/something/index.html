@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Something</title>
+  <meta name="description" content="A superb article about nothing">
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Supermercado+One&display=swap"
+  rel="stylesheet"
+/>
+<link
+  href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Crimson+Pro:wght@400;500;600&display=swap"
+  rel="stylesheet"
+/>
+<link
+  href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;600;700&display=swap"
+  rel="stylesheet"
+/>
+<link
+  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,500,0,0"
+  rel="stylesheet"
+/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink: "#161616",
+          cream: "#ffdd99",
+          ember: "#d94f30",
+          gold: "#d9a441",
+          paper: "#fff8ed",
+          tobacco: "#6a4a2c",
+        },
+        fontFamily: {
+          display: ["IBM Plex Sans Condensed", "Helvetica", "Arial", "sans-serif"],
+          body: ["Crimson Pro", "Georgia", "serif"],
+          ui: ["Helvetica", "Arial", "sans-serif"],
+          logo: ["Supermercado One", "serif"],
+        },
+      },
+    },
+  };
+</script>  <link rel="stylesheet" href="/static/site.css">
+</head>
+
+<body class="min-h-screen flex flex-col bg-cream font-body text-ink antialiased">
+
+<main class="relative isolate flex-1 overflow-hidden">
+  <div class="absolute inset-0 bg-[linear-gradient(to_bottom,_transparent,_rgba(255,248,237,0.35))]"></div>
+  <div class="relative mx-auto max-w-6xl px-6 pt-6 sm:px-10 lg:px-12">
+    <nav class="rounded-[1.75rem] border border-black/10 bg-[#fff8ed] px-4 py-4 shadow-lg shadow-black/5 sm:px-6">
+      <div class="flex items-center justify-between gap-4">
+        <div class="min-w-0">
+          <a
+            href="/"
+            class="logo-mark synthetic-bold font-logo text-[2.55rem] leading-none text-tobacco transition hover:text-ember sm:text-[2.7rem]"
+          >
+            kogswell
+          </a>
+        </div>
+        <div class="flex shrink-0 items-center gap-2">
+          <a
+            href="/site/search/"
+            aria-label="Search"
+            class="inline-flex h-12 w-12 items-center justify-center rounded-full border border-black/10 bg-white/80 font-ui text-ink transition hover:border-ember hover:text-ember"
+          >
+            <span class="material-symbols-outlined text-[24px]">search</span>
+          </a>
+          <a
+            href="/site/menu/"
+            aria-label="Menu"
+            class="inline-flex h-12 w-12 items-center justify-center rounded-full border border-black/10 bg-white/80 font-ui text-ink transition hover:border-ember hover:text-ember"
+          >
+            <span class="material-symbols-outlined text-[26px]">menu</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <section class="relative mx-auto max-w-6xl px-6 py-12 sm:px-10 sm:py-16 lg:px-12">
+    <div class="grid gap-10 lg:grid-cols-[minmax(0,70%)_minmax(18rem,30%)] lg:items-start">
+      <article class="rounded-[2rem] border border-black/15 bg-paper p-7">
+        <p class="font-ui text-xs font-semibold uppercase tracking-[0.3em] text-ember">
+          article
+        </p>
+        <h1 class="page-title mt-3 font-display">
+          Something
+        </h1>
+        <p class="mt-4 max-w-2xl text-[1.15rem] leading-8 text-black/75">
+          A superb article about nothing
+        </p>
+        <div class="article-content mt-8 max-w-none text-[1.1rem] leading-8 text-black/80">
+          <p>Thanks for looking!</p>
+        </div>
+      </article>
+
+      <aside class="lg:justify-self-end">
+        <div class="space-y-4">
+          <a
+            href="/article/handbook/"
+            class="group block border border-black/15 bg-paper p-5 transition duration-200 hover:-translate-y-1 hover:border-ember"
+          >
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <p class="font-ui text-xs font-semibold uppercase tracking-[0.28em] text-ember">
+                  article
+                </p>
+                <h3 class="mt-1 text-xl font-semibold leading-tight text-ink">
+                  Handbook
+                </h3>
+              </div>
+              <span
+                class="mt-1 inline-flex h-9 w-9 shrink-0 items-center justify-center border border-black/10 text-sm text-stone-500 transition group-hover:border-ember group-hover:text-ember"
+              >
+                ↗
+              </span>
+            </div>
+            <p class="mt-3 text-base leading-7 text-stone-700">
+              a handbook
+            </p>
+          </a>
+        </div>
+      </aside>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer text-black">
+  <div class="mx-auto max-w-6xl px-6 pb-10 pt-4 text-sm sm:px-10 lg:px-12">
+<p>&copy; 2025, Kogswell Cycles</p>
+<p>email: m@kogswellcycles.com</p>
+<p>phone +1.341.333.8900</p>  </div>
+</footer>
+
+</body>
+</html>

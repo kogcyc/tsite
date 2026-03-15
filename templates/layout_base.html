@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title }}</title>
+  <meta name="description" content="{{ desc }}">
+  {% block head_extras %}{% endblock %}
+  <link rel="stylesheet" href="/static/site.css">
+</head>
+
+<body class="{% block body_class %}{% endblock %}">
+
+  {% block page %}{% endblock %}
+
+  {% block footer %}
+  <footer class="site-footer text-black">
+    <div class="mx-auto max-w-6xl px-6 pb-10 pt-4 text-sm sm:px-10 lg:px-12">
+    {% include "partial_footer.html" %}
+    </div>
+  </footer>
+  {% endblock %}
+
+</body>
+</html>

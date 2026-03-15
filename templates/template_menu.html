@@ -1,0 +1,103 @@
+{% extends "layout_base.html" %}
+
+{% block head_extras %}
+{% include "partial_head_theme.html" %}
+{% endblock %}
+
+{% block body_class %}min-h-screen flex flex-col bg-cream font-body text-ink antialiased{% endblock %}
+
+{% block page %}
+<main class="relative isolate flex-1 overflow-hidden">
+  <div class="absolute inset-0 bg-[linear-gradient(to_bottom,_transparent,_rgba(255,248,237,0.35))]"></div>
+  <div class="relative mx-auto max-w-6xl px-6 pt-6 sm:px-10 lg:px-12">
+    <nav class="rounded-[1.75rem] border border-black/10 bg-[#fff8ed] px-4 py-4 shadow-lg shadow-black/5 sm:px-6">
+      <div class="flex items-center justify-between gap-4">
+        <div class="min-w-0">
+          <a
+            href="/"
+            class="logo-mark synthetic-bold font-logo text-[2.55rem] leading-none text-tobacco transition hover:text-ember sm:text-[2.7rem]"
+          >
+            kogswell
+          </a>
+        </div>
+        <div class="flex shrink-0 items-center gap-2">
+          <a
+            href="/site/search/"
+            aria-label="Search"
+            class="inline-flex h-12 w-12 items-center justify-center rounded-full border border-black/10 bg-white/80 font-ui text-ink transition hover:border-ember hover:text-ember"
+          >
+            <span class="material-symbols-outlined text-[24px]">search</span>
+          </a>
+          <a
+            href="/site/menu/"
+            aria-label="Menu"
+            class="inline-flex h-12 w-12 items-center justify-center rounded-full border border-black/10 bg-white/80 font-ui text-ink transition hover:border-ember hover:text-ember"
+          >
+            <span class="material-symbols-outlined text-[26px]">menu</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <section class="relative mx-auto max-w-6xl px-6 py-12 sm:px-10 sm:py-16 lg:px-12">
+    <div class="grid gap-10 lg:grid-cols-[minmax(0,70%)_minmax(18rem,30%)] lg:items-start">
+      <article class="rounded-[2rem] border border-black/15 bg-paper p-7">
+        {% block page_kicker %}
+        <p class="font-ui text-xs font-semibold uppercase tracking-[0.3em] text-ember">
+          {{ this_page.section }}
+        </p>
+        {% endblock %}
+        <h1 class="page-title mt-3 font-display">
+          {{ title }}
+        </h1>
+        <div class="article-content mt-8 max-w-none text-[1.1rem] leading-8 text-black/80">
+          {% block page_content %}
+          {{ content | safe }}
+          {% endblock %}
+        </div>
+      </article>
+
+      <aside class="lg:justify-self-end">
+        <div class="space-y-4">
+          {% for p in all_pages %}
+          {% if p.permalink != this_page.permalink %}
+          <a
+            href="{{ p.permalink }}"
+            class="group block border border-black/15 bg-paper p-5 transition duration-200 hover:-translate-y-1 hover:border-ember"
+          >
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <p class="font-ui text-xs font-semibold uppercase tracking-[0.28em] text-ember">
+                  {{ p.section }}
+                </p>
+                <h3 class="mt-1 text-xl font-semibold leading-tight text-ink">
+                  {{ p.title }}
+                </h3>
+              </div>
+              <span
+                class="mt-1 inline-flex h-9 w-9 shrink-0 items-center justify-center border border-black/10 text-sm text-stone-500 transition group-hover:border-ember group-hover:text-ember"
+              >
+                ↗
+              </span>
+            </div>
+            <p class="mt-3 text-base leading-7 text-stone-700">
+              {{ p.desc }}
+            </p>
+          </a>
+          {% endif %}
+          {% endfor %}
+        </div>
+      </aside>
+    </div>
+  </section>
+</main>
+{% endblock %}
+
+{% block footer %}
+<footer class="site-footer text-black">
+  <div class="mx-auto max-w-6xl px-6 pb-10 pt-4 text-sm sm:px-10 lg:px-12">
+    {% include "partial_footer.html" %}
+  </div>
+</footer>
+{% endblock %}
