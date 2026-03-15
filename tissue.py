@@ -30,7 +30,7 @@ STATIC_DIR    = ROOT_DIR / "static"
 
 # Sitemap settings — e.g. "https://example.com"
 sitemap_path       = BUILD_DIR / "sitemap.xml"
-sitemap_base_url   = os.getenv("TISSUE_SITEMAP_BASE_URL", "http://127.0.0.1:8000")
+sitemap_base_url   = os.getenv("TISSUE_SITEMAP_BASE_URL", "https://kogswellcycles.com")
 
 # Frontmatter keys
 VALID_EXCLUDE_VALUES = {"all_pages", "section", "sitemap", "search"}
