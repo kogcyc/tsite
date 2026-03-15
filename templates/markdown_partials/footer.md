@@ -1,6 +1,6 @@
 
 
-&copy; 2025, Kogswell Cycles
+&copy; 2026, Kogswell Cycles
 
 email: m@kogswellcycles.com
 
