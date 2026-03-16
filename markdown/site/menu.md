@@ -13,7 +13,7 @@ Our aim is to create a place where people who care about making bicycles safer, 
 Anyone serious about that goal is welcome here.
 
 ###Contact Us###
-Call or text us during regular office hours in California where it is currently <span id="ca-clock" style="font-weight:700;color:#a00">--:--</span>.
+Call or text us during regular office hours in California where it is currently <span id="ca-clock" style="font-weight:700;color:#a00">--:--</span>: +1.341.333.8900
 
 Or email us: m@kogswellcycles.com
 
