@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404</title>
+  <meta name="description" content="Page not found">
+  <style>
+    :root {
+      /* Tune these to move the link around. */
+      --retry-x: 24px;
+      --retry-y: 50%;
+    }
+
+    html, body {
+      margin: 0;
+      height: 100%;
+      background: #ffdd99;
+    }
+
+    .wrap {
+      min-height: 100%;
+      display: grid;
+      place-items: center;
+      padding: 16px;
+      box-sizing: border-box;
+    }
+
+    .hero {
+      position: relative;
+      display: inline-block;
+      line-height: 0;
+    }
+
+    .hero img {
+      max-width: min(100vw - 32px, 900px);
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .retry {
+      position: absolute;
+      left: calc(100% + var(--retry-x));
+      top: var(--retry-y);
+      transform: translateY(-50%);
+      color: #ffffff;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 20px;
+      padding: 10px 14px;
+      font: 600 16px/1.2 Arial, sans-serif;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .retry:hover,
+    .retry:focus-visible {
+      background: rgba(0, 0, 0, 0.7);
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <div class="hero">
+      <img src="/static/404.png" alt="Page not found">
+      <a class="retry" href="/">click here to try again</a>
+    </div>
+  </main>
+</body>
+</html>

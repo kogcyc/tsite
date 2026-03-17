@@ -17,6 +17,9 @@ Call or text us during regular office hours in California where it is currently 
 
 Or email us: m@kogswellcycles.com
 
+###QR Code for the website###
+<img src="/static/kogswell_qr.svg" />
+
 <script>
 (function () {
   const el = document.getElementById("ca-clock");
