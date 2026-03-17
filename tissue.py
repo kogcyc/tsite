@@ -168,6 +168,9 @@ def prepare_build_dir():
 def copy_static():
     if STATIC_DIR.exists():
         shutil.copytree(STATIC_DIR, BUILD_DIR / "static")
+        static_favicon = BUILD_DIR / "static" / "favicon" / "favicon.ico"
+        if static_favicon.is_file():
+            shutil.copy2(static_favicon, BUILD_DIR / "favicon.ico")
         if VERBOSE:
             print("📁 Copied static assets.")
     else:
