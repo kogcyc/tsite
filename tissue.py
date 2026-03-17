@@ -44,6 +44,40 @@ FRONTMATTER_SCHEMA = {
 }
 KNOWN_KEYS = set(FRONTMATTER_SCHEMA.keys())
 
+# Section color system for tiles and section-entry cards.
+# Add future sections here (e.g. "products") so tiles pick up colors globally.
+DEFAULT_SECTION_STYLE = {
+    "hub_bg": "bg-paper",
+    "hub_title_text": "text-ink",
+    "hub_desc_text": "text-stone-700",
+    "hub_arrow_border": "border-black/10",
+    "hub_arrow_text": "text-stone-500",
+    "tile_bg": "bg-paper",
+    "tile_kicker_text": "text-ember",
+}
+
+SECTION_STYLES = {
+    "default": DEFAULT_SECTION_STYLE,
+    "article": {
+        "hub_bg": "bg-[#1f5e49]",
+        "hub_title_text": "text-paper",
+        "hub_desc_text": "text-paper/90",
+        "hub_arrow_border": "border-white/25",
+        "hub_arrow_text": "text-paper/80",
+        "tile_bg": "bg-[#d7eadf]",
+        "tile_kicker_text": "text-[#1f5e49]",
+    },
+    "products": {
+        "hub_bg": "bg-[#245f82]",
+        "hub_title_text": "text-paper",
+        "hub_desc_text": "text-paper/90",
+        "hub_arrow_border": "border-white/25",
+        "hub_arrow_text": "text-paper/80",
+        "tile_bg": "bg-[#d8eaf3]",
+        "tile_kicker_text": "text-[#245f82]",
+    },
+}
+
 
 # ------------------------------------------------------------
 # Validate frontmatter
@@ -134,6 +168,11 @@ def generate_permalink(md_path):
     return "/" + rel.with_suffix("").as_posix() + "/"
 
 
+def get_section_style(section):
+    style = SECTION_STYLES.get(section, DEFAULT_SECTION_STYLE)
+    return dict(style)
+
+
 # ------------------------------------------------------------
 # Prerender markdown partials to templates
 # ------------------------------------------------------------
@@ -205,6 +244,7 @@ def build_index():
             "permalink": page.get("permalink") or generate_permalink(md_path),
             "content": html,
             "section": section,
+            "section_style": get_section_style(section),
             "exclude": exclude,
         })
 
@@ -250,6 +290,7 @@ def render_pages(all_pages, env):
         rendered = template.render(
             this_page=page,
             all_pages=template_all_pages,
+            section_styles=SECTION_STYLES,
             **page
         )
 
